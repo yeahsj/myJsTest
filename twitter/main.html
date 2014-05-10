@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+
+        <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+        Remove this if you use the .htaccess -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+        <title>first</title>
+        <meta name="description" content="" />
+        <meta name="author" content="yeahsj" />
+
+        <meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+        <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="twitter.js"></script>
+        <script type="text/javascript">
+
+            function toTw() {
+                var request_url = $("#request_url").val();
+                var method = $("#method").val();
+                twitter().accessTwitterApi(request_url, method, null, mydo);
+            }
+
+            function mydo(res) {
+                alert(1);
+                window.$("#restext").val(res);
+            }
+
+            function accessHome() {
+                var datas = twitter().accessHomeAPI({
+                    count : 10
+                });
+                $.each(datas, function(index, data) {
+                    alert(data.id);
+                });
+            }
+
+            function retwitter() {
+                twitter().postRetwitterAPI('458047489405616128');
+            }
+
+            function favorites() {
+                twitter().postFavoritesAPI('458047489405616128');
+            }
+
+            function myFollow() {
+                // https://stream.twitter.com/1.1/statuses/filter.json?follow=87532773, 6253282, 13058232, 12925072, 200848565, 183190224, 169927844, 10228272, 401478793
+                //
+            }
+
+            function accessDiscoverySuggetions() {
+                var records = twitter().accessDcvSuggetions();
+                $.each(records, function(index, record) {
+                    alert(record.id);
+                    if (index > 5) {
+                        return false;
+                    }
+                });
+            }
+
+            function accessDcvSugTimeLine() {
+                var records = twitter().accessDcvSugTimeLine();
+                $.each(records, function(index, record) {
+                    alert(record.id);
+                    if (index > 5) {
+                        return false;
+                    }
+                });
+            }
+
+            var dcvFrdFrdStates = null;
+            var actFrdFrd = null;
+            var actFrdFav = null;
+
+            function accessDiscoveryFrdFrdUserTimeLine() {
+                dcvFrdFrdStates = twitter().accessDcvFrdFrdUserTimeLine();
+                console.log(" the accessDiscoveryFrdFrdUserTimeLine result is named << dcvFrdFrdStates >> ");
+            }
+
+            function accessActvFrdFrd() {
+                actFrdFrd = twitter().accessActvFrdFrd();
+                console.log(" the accessActvFrdFrd result is named << actFrdFrd >> ");
+            }
+
+            function accessAvtvFrdFav() {
+                actFrdFav = twitter().accessAvtvFrdFav();
+                console.log(" the accessAvtvFrdFav result is named << actFrdFav >> ");
+                // $.each(records, function(index, record) {
+                // alert( record.id );
+                // if( index > 5 ){
+                // return false;
+                // }
+                // });
+            }
+
+        </script>
+    </head>
+
+    <body onload="twitter().saveToken()">
+        <div>
+            <header>
+                <h1>first</h1>
+            </header>
+            <nav>
+                <p>
+                    //2423503237-yyEl7icaWG0ih7YB11KAt2SgXpBvdCtuv7xD0zA
+                    <br>
+                    http_method:
+                    <input type="text" id="method" name="method" size="100" value="GET"/>
+                    request_url:
+                    <input type="text" size="100" value="https://api.twitter.com/1.1/statuses/home_timeline.json" id="request_url" name="request_url" />
+                    <br>
+                    <input type="button" onclick="toTw();" value="test_by_url"/>
+
+                    <input type="button" onclick="twitter().getAppRateLimit();" value="appRateLimit"/>
+                    <input type="button" onclick="accessHome();" value="accessHomeAPI"/>
+                    <input type="button" onclick="retwitter();" value="retwitterAPI"/>
+                    <input type="button" onclick="accessDiscoverySuggetions();" value="accessDiscoverySuggetions"/>
+                    <input type="button" onclick="accessDcvSugTimeLine();" value="accessDcvSugTimeLine"/>
+
+                    <input type="button" onclick="accessDiscoveryFrdFrdUserTimeLine();" value="accessDiscoveryFrdFrdUserTimeLine"/>
+                    <input type="button" onclick="twitter().postFavoritesAPI('458047489405616128');" value="favoritesAPI"/>
+
+                    <input type="button" onclick="accessActvFrdFrd();" value="accessActvFrdFrd"/>
+                    <input type="button" onclick="accessAvtvFrdFav();" value="accessAvtvFrdFav"/>
+
+                    <br>
+                </p>
+                <p>
+                    <ul>
+                        <li>
+                            获取一系列用户的 statuses/filter https://stream.twitter.com/1.1/statuses/filter.json?follow=87532773, 6253282, 13058232, 12925072, 200848565, 183190224, 169927844, 10228272, 401478793
+                        </li>
+                        <li>
+                            https://api.twitter.com/1.1/statuses/home_timeline.json?max_id=457562208785141759&count=5&since_id=458047489405616128
+                        </li>
+                        <li>
+                            获取me的friends ids
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <div >
+                        <textarea id="restext" rows="8" cols="100"></textarea>
+                    </div>
+                </p>
+            </nav>
+            <footer>
+                <p>
+                    &copy; Copyright  by yeahsj
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>
