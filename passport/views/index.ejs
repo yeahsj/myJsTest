@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <meta property="qc:admins" content="54433761154032660527351006375" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" name="baidu-tc-cerfication" src="http://apps.bdimg.com/cloudaapi/lightapp.js#4de91cdbae129326e59d851a37215d3d"></script> <script type="text/javascript">window.bd && bd._qdc && bd._qdc.init({app_id: '50423dbb6c6621ccf7cbcca4'});</script>
+  </head>
+  <body>
+    <h1>Login</h1>
+    <form action="/login" method="post">
+        <div>
+            <label>Username:</label>
+            <input type="text" name="username"/>
+        </div>
+        <div>
+            <label>Password:</label>
+            <input type="password" name="password"/>
+        </div>
+        <div>
+            <input type="submit" value="Log In"/>
+        </div>
+    </form>
+    <hr/>
+    <!--
+    <a href="/auth/facebook?backurl=http://localhost:3000/&deviceType=app1&appType=facebook">Facebook Login 1</a><br>
+    <a href="/auth/facebook?backurl=http://localhost:3000/&deviceType=app2&appType=facebook">Facebook Login 2</a><br>
+    <a href="/auth/facebook?backurl=http://localhost:3000/&deviceType=app3&appType=facebook">Facebook Login 3</a><br>
+    <a href="/auth/github?backurl=http://localhost:3000/&deviceType=app1&appType=github">Github Login</a><br>
+    <a href="/auth/linkedin?backurl=http://localhost:3000/&deviceType=app2&appType=linkedin">Linkedin Login</a> <br>
+    <a href="/auth/twitter?backurl=http://localhost:3000/&deviceType=app3&appType=twitter">Twitter Login</a>
+    -->
+    <a href="/auth/qq?backurl=http://www.qq.com">qq Login</a><br>
+    <a href="/auth/facebook/app2?backurl=http://www.baidu.com">facebook Login</a><br>
+    <a href="/auth/twitter?backurl=http://www.baidu.com">twitter Login</a><br>
+    <a href="/auth/google?backurl=http://www.baidu.com">google Login</a><br>
+    <a href="/auth/github?backurl=http://www.baidu.com">github Login</a><br>
+    <a href="/auth/linkedin?backurl=http://www.baidu.com">linkedin Login</a><br>
+    <a href="/auth/weibo?backurl=http://www.baidu.com">weibo Login</a><br>
+    
+    <hl><%= version %></hl>
+  </body>
+</html>

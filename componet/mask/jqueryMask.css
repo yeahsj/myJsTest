@@ -1,0 +1,22 @@
+.windowMask{
+	position:absolute;
+	margin:0px;
+	padding:0px;
+	background:#ccc;
+	opacity:0.40;
+	filter:alpha(opacity=10);
+	zIndex:999; 
+	z-index:999;
+}
+.hidden{
+	display:none;
+}
+.windowMaskMessage{
+	position:absolute;
+	background:lightyellow;
+	border:solid #ccc 1px;
+	zIndex:1000;
+	z-index:1000;
+	margin:0px;
+	padding:0px;
+}
